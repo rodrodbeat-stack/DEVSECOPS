@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050910">
+  <meta name="description" content="DEVSECOPS TERMINATOR: dashboard cibernético para visualizar pipelines, seguridad e infraestructura.">
+  <title>DEVSECOPS TERMINATOR | Command Center</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="ambient ambient-red" aria-hidden="true"></div>
+  <div class="ambient ambient-blue" aria-hidden="true"></div>
+
+  <header class="topbar panel">
+    <a class="brand" href="#inicio" aria-label="DevSecOps Terminator inicio">
+      <span class="brand-mark">T<span>−</span>800</span>
+      <span class="brand-copy"><strong>DEV<span>SEC</span>OPS</strong><small>AUTOMATIZAR · ASEGURAR · ENTREGAR</small></span>
+    </a>
+    <div class="top-message"><span class="pulse-dot"></span> SISTEMA OPERATIVO <b id="clock">00:00:00</b></div>
+    <div class="top-actions">
+      <button class="icon-button" id="soundToggle" title="Activar o desactivar efectos de interfaz" aria-label="Alternar efectos">◖))</button>
+      <button class="button button-danger" id="runAll">▶ EJECUTAR PIPELINE</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar panel">
+      <div class="side-label">COMMAND MENU <span>01</span></div>
+      <nav id="navigation">
+        <button class="nav-item active" data-view="overview"><span>⌂</span> Inicio</button>
+        <button class="nav-item" data-view="diagram"><span>⌘</span> Diagrama general</button>
+        <button class="nav-item" data-view="pipeline"><span>⟲</span> Pipelines CI/CD</button>
+        <button class="nav-item" data-view="security"><span>⬡</span> Seguridad DevSecOps</button>
+        <button class="nav-item" data-view="infrastructure"><span>▦</span> Infraestructura</button>
+        <button class="nav-item" data-view="kubernetes"><span>✥</span> Kubernetes</button>
+        <button class="nav-item" data-view="monitoring"><span>⌁</span> Monitoreo</button>
+        <button class="nav-item" data-view="reports"><span>▤</span> Reportes</button>
+      </nav>
+      <div class="terminal-card">
+        <div class="terminal-head"><span class="red-dot"></span><span class="yellow-dot"></span><span class="green-dot"></span><small>TERMINAL T-800</small></div>
+        <div class="terminal-art" aria-hidden="true">◉</div>
+        <strong>MISSION STATUS</strong>
+        <p>Seguridad integrada en cada etapa.</p>
+        <div class="mini-status"><span class="status-led"></span> DEFENSA ACTIVA</div>
+        <div class="terminal-foot">ROOT@DEVSECOPS:~$ <span>_</span></div>
+      </div>
+      <div class="side-footer">BUILD · SECURE · DEPLOY<br><small>COMMAND CENTER v1.0</small></div>
+    </aside>
+
+    <main class="main-content">
+      <section class="view active" id="view-overview">
+        <div class="page-heading">
+          <div><div class="eyebrow">CENTRO DE OPERACIONES / 001</div><h1>COMMAND <span>CENTER</span></h1><p>Vista unificada del ciclo de entrega segura.</p></div>
+          <div class="environment-picker"><label for="environment">ENTORNO ACTIVO</label><select id="environment"><option>DEV</option><option>INTEGRACIÓN</option><option>CERTIFICACIÓN</option><option>QA</option><option>PRODUCCIÓN</option></select></div>
+        </div>
+        <div class="metrics-grid">
+          <article class="metric panel"><div class="metric-top"><span>PIPELINES</span><i class="cyan">↗</i></div><strong id="metricPipelines">24</strong><small><b class="green-text">+12%</b> vs. periodo anterior</small><div class="sparkline"><i style="height:25%"></i><i style="height:45%"></i><i style="height:38%"></i><i style="height:65%"></i><i style="height:52%"></i><i style="height:83%"></i><i style="height:72%"></i><i style="height:100%"></i></div></article>
+          <article class="metric panel"><div class="metric-top"><span>SEGURIDAD</span><i class="red-text">⬡</i></div><strong id="metricSecurity">98.4<span class="unit">%</span></strong><small><b class="green-text">EN RANGO</b> · cobertura de controles</small><div class="progress"><span style="width:98.4%"></span></div></article>
+          <article class="metric panel"><div class="metric-top"><span>DEPLOYMENTS</span><i class="cyan">⇧</i></div><strong id="metricDeploys">18</strong><small><b class="green-text">16 exitosos</b> · 2 pendientes</small><div class="progress"><span style="width:89%"></span></div></article>
+          <article class="metric panel"><div class="metric-top"><span>ALERTAS ABIERTAS</span><i class="amber-text">⚠</i></div><strong id="metricAlerts">03</strong><small><b class="amber-text">2 medias</b> · 1 baja</small><div class="progress amber-progress"><span style="width:28%"></span></div></article>
+        </div>
+
+        <section class="panel flow-panel">
+          <div class="section-title"><div><span class="section-index">01 / FLOW MAP</span><h2>FLUJO <span>DEVSECOPS</span></h2></div><div class="legend"><span><i class="legend-blue"></i> PROCESO</span><span><i class="legend-red"></i> SEGURIDAD</span><span><i class="legend-green"></i> OK</span></div></div>
+          <div class="flow-rail">
+            <div class="flow-stage"><span class="stage-number">01</span><div class="stage-icon">⌨</div><strong>DEVELOP</strong><small>Código fuente</small></div>
+            <div class="flow-link"><span></span>›</div>
+            <div class="flow-stage"><span class="stage-number">02</span><div class="stage-icon">⑂</div><strong>GIT</strong><small>Versionamiento</small></div>
+            <div class="flow-link"><span></span>›</div>
+            <div class="flow-stage"><span class="stage-number">03</span><div class="stage-icon">⚙</div><strong>CI / BUILD</strong><small>Build & test</small></div>
+            <div class="flow-link red-link"><span></span>›</div>
+            <div class="flow-stage security-stage"><span class="stage-number">04</span><div class="stage-icon">⬡</div><strong>SECURITY</strong><small>SAST · DAST · SCA</small></div>
+            <div class="flow-link"><span></span>›</div>
+            <div class="flow-stage"><span class="stage-number">05</span><div class="stage-icon">▤</div><strong>REGISTRY</strong><small>Imagen segura</small></div>
+            <div class="flow-link"><span></span>›</div>
+            <div class="flow-stage"><span class="stage-number">06</span><div class="stage-icon">◇</div><strong>INFRA</strong><small>Terraform / IaC</small></div>
+            <div class="flow-link"><span></span>›</div>
+            <div class="flow-stage"><span class="stage-number">07</span><div class="stage-icon">✥</div><strong>DEPLOY</strong><small>Kubernetes</small></div>
+            <div class="flow-link"><span></span>›</div>
+            <div class="flow-stage"><span class="stage-number">08</span><div class="stage-icon">◉</div><strong>MONITOR</strong><small>Métricas & logs</small></div>
+          </div>
+          <div class="security-loop"><span>⬡</span><div><b>SECURITY BY DESIGN</b><small>Controles continuos durante todo el ciclo de vida</small></div><div class="loop-line"></div><span class="loop-end">↻</span></div>
+          <div class="flow-bottom"><span><i class="status-led"></i> FLUJO LISTO PARA EJECUCIÓN</span><button class="text-button" data-go="diagram">EXPLORAR DIAGRAMA COMPLETO ↗</button></div>
+        </section>
+
+        <div class="bottom-grid">
+          <section class="panel jobs-panel"><div class="section-title compact"><div><span class="section-index">02 / PIPELINE ACTIVITY</span><h2>ÚLTIMAS <span>EJECUCIONES</span></h2></div><button class="text-button" data-go="pipeline">VER TODO ↗</button></div>
+            <div class="table-wrap"><table><thead><tr><th>PIPELINE</th><th>BRANCH</th><th>ESTADO</th><th>DURACIÓN</th></tr></thead><tbody id="pipelineRows">
+              <tr><td><b>#124</b> <small>api-web</small></td><td><code>main</code></td><td><span class="pill success">● SUCCESS</span></td><td>02m 14s</td></tr>
+              <tr><td><b>#123</b> <small>api-service</small></td><td><code>release/2.4</code></td><td><span class="pill success">● SUCCESS</span></td><td>03m 08s</td></tr>
+              <tr><td><b>#122</b> <small>frontend</small></td><td><code>develop</code></td><td><span class="pill warning">● RUNNING</span></td><td>01m 42s</td></tr>
+              <tr><td><b>#121</b> <small>backend</small></td><td><code>feature/auth</code></td><td><span class="pill danger">● FAILED</span></td><td>00m 48s</td></tr>
+            </tbody></table></div>
+          </section>
+          <section class="panel health-panel"><div class="section-title compact"><div><span class="section-index">03 / SECURITY POSTURE</span><h2>POSTURA DE <span>SEGURIDAD</span></h2></div></div>
+            <div class="security-score"><div class="score-ring"><span>98<small>%</small></span></div><div><strong>PROTECCIÓN ÓPTIMA</strong><p>Controles simulados en estado saludable.</p><span class="pill success">● CONTROL ACTIVO</span></div></div>
+            <div class="control-row"><span>SAST / análisis estático</span><b>100%</b><div class="tiny-bar"><i style="width:100%"></i></div></div>
+            <div class="control-row"><span>Dependencias (SCA)</span><b>96%</b><div class="tiny-bar"><i style="width:96%"></i></div></div>
+            <div class="control-row"><span>Seguridad de contenedores</span><b>94%</b><div class="tiny-bar"><i style="width:94%"></i></div></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="view-diagram">
+        <div class="page-heading"><div><div class="eyebrow">ARQUITECTURA / 002</div><h1>DIAGRAMA <span>GENERAL</span></h1><p>Selecciona un componente para inspeccionar sus responsabilidades.</p></div><span class="pill success">● INTERACTIVO</span></div>
+        <div class="panel diagram-panel"><div class="diagram-toolbar"><span>ARCHITECTURE MAP <b>· v1.0</b></span><span>ZOOM <button id="zoomOut">−</button><button id="zoomReset">100%</button><button id="zoomIn">+</button></span></div>
+          <div class="diagram-canvas" id="diagramCanvas"><div class="arch-row">
+            <button class="arch-node" data-node="developer"><i>⌨</i><b>Developer</b><small>Commit / MR</small></button><span class="arch-arrow">⟶</span>
+            <button class="arch-node" data-node="git"><i>⑂</i><b>Git Platform</b><small>GitHub / GitLab</small></button><span class="arch-arrow">⟶</span>
+            <button class="arch-node" data-node="ci"><i>⚙</i><b>CI Runner</b><small>Build · Test</small></button>
+          </div><div class="arch-connector">↓ <span>artefactos y resultados de análisis</span> ↓</div>
+          <div class="arch-row">
+            <button class="arch-node red-node" data-node="security"><i>⬡</i><b>Security Gate</b><small>SAST · DAST · SCA</small></button><span class="arch-arrow">⟶</span>
+            <button class="arch-node" data-node="registry"><i>▤</i><b>Artifact Registry</b><small>Imágenes firmadas</small></button><span class="arch-arrow">⟶</span>
+            <button class="arch-node" data-node="iac"><i>◇</i><b>Terraform / IaC</b><small>Plan · Apply</small></button>
+          </div><div class="arch-connector">↓ <span>promoción controlada por entorno</span> ↓</div>
+          <div class="arch-row">
+            <button class="arch-node" data-node="dev"><i>⌁</i><b>DEV / INT</b><small>Validación rápida</small></button><span class="arch-arrow">⟶</span>
+            <button class="arch-node" data-node="qa"><i>◈</i><b>CERT / QA</b><small>Pruebas y aprobación</small></button><span class="arch-arrow">⟶</span>
+            <button class="arch-node red-node" data-node="prod"><i>✥</i><b>PRODUCCIÓN</b><small>Deploy controlado</small></button>
+          </div><div class="monitor-band"><span>◉ OBSERVABILIDAD</span><b>Prometheus</b><b>Grafana</b><b>Logs</b><b>Alertas</b><span>↶ feedback continuo al equipo</span></div></div>
+        </div>
+        <div class="panel node-details" id="nodeDetails"><span class="section-index">COMPONENT INSPECTOR</span><h2>Selecciona un componente</h2><p>Los detalles del componente aparecerán aquí.</p></div>
+      </section>
+
+      <section class="view" id="view-pipeline">
+        <div class="page-heading"><div><div class="eyebrow">AUTOMATIZACIÓN / 003</div><h1>PIPELINE <span>CI/CD</span></h1><p>Ejecuta una simulación de pipeline y revisa el log de cada job.</p></div><button class="button button-danger" id="runPipelinePage">▶ INICIAR PIPELINE</button></div>
+        <div class="pipeline-layout"><div class="panel pipeline-list"><div class="section-title compact"><div><span class="section-index">JOB SEQUENCE</span><h2>ETAPAS DEL <span>PIPELINE</span></h2></div></div><div id="jobList">
+          <button class="job-row selected" data-job="checkout"><span class="job-icon">01</span><span><b>Checkout</b><small>Obtener código fuente</small></span><em>READY</em></button>
+          <button class="job-row" data-job="build"><span class="job-icon">02</span><span><b>Build</b><small>Compilar artefacto</small></span><em>READY</em></button>
+          <button class="job-row" data-job="test"><span class="job-icon">03</span><span><b>Test</b><small>Pruebas unitarias</small></span><em>READY</em></button>
+          <button class="job-row" data-job="sast"><span class="job-icon">04</span><span><b>SAST / SCA</b><small>Escaneo de código</small></span><em>READY</em></button>
+          <button class="job-row" data-job="container"><span class="job-icon">05</span><span><b>Container scan</b><small>Imagen y dependencias</small></span><em>READY</em></button>
+          <button class="job-row" data-job="deploy"><span class="job-icon">06</span><span><b>Deploy</b><small>Despliegue de demostración</small><em>MANUAL</em></button>
+        </div><div class="pipeline-progress"><div><span>PROGRESO</span><b id="progressLabel">0%</b></div><div class="progress"><span id="pipelineProgressBar" style="width:0%"></span></div></div></div>
+        <div class="panel log-panel"><div class="log-header"><div><span class="section-index">LIVE OUTPUT</span><h2 id="logTitle">TERMINAL <span>OUTPUT</span></h2></div><span class="live-label"><i></i> SIMULADO</span></div><div class="log-meta"><span>runner #local-01</span><span>shell / bash</span><button id="clearLogs">LIMPIAR</button></div><pre id="terminalOutput" aria-live="polite"><span class="log-muted">[system]</span> Esperando ejecución del pipeline...
+<span class="log-blue">[ready]</span> Selecciona INICIAR PIPELINE para comenzar.
+<span class="log-muted">[note]</span> Esta consola es una simulación local; no ejecuta tareas reales.</pre><div class="log-footer"><span><i class="status-led"></i> CONEXIÓN LOCAL</span><span id="logLineCount">3 líneas</span></div></div></div>
+      </section>
+
+      <section class="view" id="view-security">
+        <div class="page-heading"><div><div class="eyebrow">DEFENSA ACTIVA / 004</div><h1>SECURITY <span>OPERATIONS</span></h1><p>Controles de seguridad representativos del ciclo DevSecOps.</p></div><span class="pill success">● POLÍTICA ACTIVA</span></div>
+        <div class="security-cards">
+          <article class="panel security-card"><div class="big-symbol red-text">⬡</div><span class="section-index">SOURCE CODE</span><h2>SAST</h2><p>Análisis estático antes de integrar cambios.</p><div class="card-stat"><b>0</b><span>críticos detectados (demo)</span></div><button class="button button-outline" data-scan="SAST">EJECUTAR ESCANEO</button></article>
+          <article class="panel security-card"><div class="big-symbol">⌘</div><span class="section-index">DEPENDENCIES</span><h2>SCA</h2><p>Revisión de librerías, licencias y CVE.</p><div class="card-stat"><b>02</b><span>actualizaciones sugeridas (demo)</span></div><button class="button button-outline" data-scan="SCA">REVISAR DEPENDENCIAS</button></article>
+          <article class="panel security-card"><div class="big-symbol">▤</div><span class="section-index">CONTAINER IMAGE</span><h2>IMAGE SCAN</h2><p>Evaluación de paquetes y capas de imagen.</p><div class="card-stat"><b>94<span>%</span></b><span>índice de cumplimiento (demo)</span></div><button class="button button-outline" data-scan="IMAGE SCAN">ESCANEAR IMAGEN</button></article>
+          <article class="panel security-card"><div class="big-symbol amber-text">⚑</div><span class="section-index">RUNTIME</span><h2>DAST</h2><p>Pruebas dinámicas sobre una aplicación desplegada.</p><div class="card-stat"><b>01</b><span>hallazgo bajo simulado</span></div><button class="button button-outline" data-scan="DAST">INICIAR PRUEBA</button></article>
+        </div><div class="panel activity-panel"><div class="section-title compact"><div><span class="section-index">SECURITY EVENT STREAM</span><h2>EVENTOS DE <span>SEGURIDAD</span></h2></div></div><div id="securityEvents"><div class="event-row"><span class="event-indicator green-text">✓</span><div><b>Política de ramas protegidas</b><small>Integridad de repositorio · hace 2 min</small></div><span class="pill success">PASS</span></div><div class="event-row"><span class="event-indicator green-text">✓</span><div><b>Validación de dependencias</b><small>SCA · hace 8 min</small></div><span class="pill success">PASS</span></div><div class="event-row"><span class="event-indicator amber-text">!</span><div><b>Actualización recomendada</b><small>Dependencia de ejemplo · hace 14 min</small></div><span class="pill warning">REVIEW</span></div></div></div>
+      </section>
+
+      <section class="view" id="view-infrastructure">
+        <div class="page-heading"><div><div class="eyebrow">PLATFORM ENGINEERING / 005</div><h1>INFRA<span>STRUCTURE</span></h1><p>Vista conceptual multicloud y automatización como código.</p></div><label class="environment-picker">PROVIDER<select id="cloudProvider"><option>Azure</option><option>AWS</option><option>GCP</option></select></label></div>
+        <div class="cloud-grid"><button class="panel cloud-card selected" data-cloud="Azure"><span class="cloud-logo">A</span><b>Microsoft Azure</b><small>Resource Groups · VNet · AKS</small><span class="pill success">PLANTILLA LISTA</span></button><button class="panel cloud-card" data-cloud="AWS"><span class="cloud-logo aws">aws</span><b>Amazon Web Services</b><small>VPC · EC2 · EKS</small><span class="pill success">PLANTILLA LISTA</span></button><button class="panel cloud-card" data-cloud="GCP"><span class="cloud-logo gcp">G</span><b>Google Cloud</b><small>VPC · Compute Engine · GKE</small><span class="pill success">PLANTILLA LISTA</span></button></div>
+        <div class="panel infra-diagram"><div class="section-title compact"><div><span class="section-index">INFRASTRUCTURE AS CODE</span><h2 id="infraTitle">AZURE <span>DEPLOYMENT MAP</span></h2></div><span class="pill">TERRAFORM</span></div><div class="infra-flow"><div class="infra-node"><i>◇</i><b>Terraform</b><small>Plan / Validate</small></div><span>→</span><div class="infra-node"><i>▦</i><b>Network</b><small>VNet / Subnets</small></div><span>→</span><div class="infra-node"><i>▣</i><b>Compute</b><small>VM / Node pool</small></div><span>→</span><div class="infra-node"><i>✥</i><b>Kubernetes</b><small>Cluster / Workloads</small></div></div><div class="infra-note"><span>ⓘ</span><p>Vista de referencia. No hay conexión con una cuenta cloud y no se crean recursos reales desde esta página.</p></div><button class="button button-outline" id="showTerraform">VER EJEMPLO DE PLAN</button><pre class="code-sample hidden" id="terraformSample"># Flujo conceptual; requiere configurar proveedor y credenciales
+terraform init
+terraform fmt -check
+terraform validate
+terraform plan -out=tfplan
+# Aplicar solo tras revisión y aprobación:
+terraform apply tfplan</pre></div>
+      </section>
+
+      <section class="view" id="view-kubernetes">
+        <div class="page-heading"><div><div class="eyebrow">CONTAINER ORCHESTRATION / 006</div><h1>KUBER<span>NETES</span></h1><p>Estado ilustrativo de clúster, nodos y workloads.</p></div><span class="pill success">● CLUSTER HEALTHY</span></div>
+        <div class="metrics-grid kube-metrics"><article class="metric panel"><div class="metric-top"><span>NODOS</span><i class="cyan">✥</i></div><strong>03<span class="unit">/03</span></strong><small class="green-text">Todos disponibles</small></article><article class="metric panel"><div class="metric-top"><span>PODS</span><i class="cyan">▦</i></div><strong id="podCount">18<span class="unit">/20</span></strong><small>18 en ejecución</small></article><article class="metric panel"><div class="metric-top"><span>SERVICIOS</span><i class="cyan">⇄</i></div><strong>06</strong><small>Endpoints saludables</small></article><article class="metric panel"><div class="metric-top"><span>RESTARTS</span><i class="amber-text">↻</i></div><strong>02</strong><small class="amber-text">Revisar eventos demo</small></article></div>
+        <div class="panel activity-panel"><div class="section-title compact"><div><span class="section-index">WORKLOAD INVENTORY</span><h2>DEPLOYMENTS <span>& PODS</span></h2></div><button class="button button-outline" id="refreshKube">↻ ACTUALIZAR VISTA</button></div><div class="table-wrap"><table><thead><tr><th>WORKLOAD</th><th>NAMESPACE</th><th>READY</th><th>IMAGEN</th><th>ESTADO</th></tr></thead><tbody><tr><td>api-web</td><td>production</td><td>3/3</td><td><code>app/web:2.4.1</code></td><td><span class="pill success">RUNNING</span></td></tr><tr><td>api-service</td><td>production</td><td>4/4</td><td><code>app/api:2.4.1</code></td><td><span class="pill success">RUNNING</span></td></tr><tr><td>worker-jobs</td><td>operations</td><td>2/3</td><td><code>app/worker:1.8.0</code></td><td><span class="pill warning">DEGRADED</span></td></tr><tr><td>prometheus</td><td>monitoring</td><td>1/1</td><td><code>prom/prometheus</code></td><td><span class="pill success">RUNNING</span></td></tr></tbody></table></div><p class="disclaimer">Datos ficticios de demostración. No representan un clúster conectado.</p></div>
+      </section>
+
+      <section class="view" id="view-monitoring">
+        <div class="page-heading"><div><div class="eyebrow">OBSERVABILITY / 007</div><h1>MONITOR<span>ING</span></h1><p>Señales operativas de referencia para servicios y plataforma.</p></div><span class="pill success">● TELEMETRÍA DEMO</span></div>
+        <div class="metrics-grid"><article class="metric panel"><div class="metric-top"><span>CPU USAGE</span><i class="cyan">⌁</i></div><strong id="cpuValue">42<span class="unit">%</span></strong><div class="progress"><span id="cpuBar" style="width:42%"></span></div><small>Promedio de clúster (demo)</small></article><article class="metric panel"><div class="metric-top"><span>MEMORY</span><i class="cyan">▤</i></div><strong>67<span class="unit">%</span></strong><div class="progress"><span style="width:67%"></span></div><small>Uso de memoria simulado</small></article><article class="metric panel"><div class="metric-top"><span>LATENCY P95</span><i class="cyan">◷</i></div><strong>128<span class="unit">ms</span></strong><div class="progress"><span style="width:36%"></span></div><small>Objetivo de referencia &lt; 200 ms</small></article><article class="metric panel"><div class="metric-top"><span>ERROR RATE</span><i class="green-text">✓</i></div><strong>0.2<span class="unit">%</span></strong><div class="progress"><span style="width:8%"></span></div><small class="green-text">Dentro del umbral</small></article></div>
+        <div class="monitor-grid"><div class="panel chart-panel"><div class="section-title compact"><div><span class="section-index">RESOURCE TELEMETRY</span><h2>USO DE <span>CPU</span></h2></div><span class="pill">ÚLTIMOS 60 MIN</span></div><div class="chart" id="cpuChart" aria-label="Gráfico ilustrativo de uso de CPU"></div><div class="chart-labels"><span>−60m</span><span>−45m</span><span>−30m</span><span>−15m</span><span>AHORA</span></div></div><div class="panel alerts-panel"><div class="section-title compact"><div><span class="section-index">ALERT MANAGER</span><h2>ALERTAS <span>RECIENTES</span></h2></div></div><div class="alert-item"><i class="amber-text">▲</i><div><b>Worker replicas below target</b><small>operations / worker-jobs</small></div><span class="pill warning">MEDIA</span></div><div class="alert-item"><i class="green-text">✓</i><div><b>API latency normal</b><small>api-service / p95</small></div><span class="pill success">RESUELTA</span></div><div class="alert-item"><i class="green-text">✓</i><div><b>Cluster nodes healthy</b><small>cluster / node status</small></div><span class="pill success">OK</span></div></div></div>
+      </section>
+
+      <section class="view" id="view-reports">
+        <div class="page-heading"><div><div class="eyebrow">INTELLIGENCE / 008</div><h1>REPORT<span> CENTER</span></h1><p>Resumen local de los indicadores ilustrativos del dashboard.</p></div><button class="button button-danger" id="exportReport">⇩ EXPORTAR REPORTE</button></div>
+        <div class="panel report-panel"><div class="section-title"><div><span class="section-index">EXECUTIVE SUMMARY</span><h2>RESUMEN <span>OPERACIONAL</span></h2></div><span class="pill">DEMO DATA</span></div><div class="report-grid"><div><small>PIPELINES EJECUTADOS</small><strong>24</strong></div><div><small>ÉXITO DE DEPLOYMENTS</small><strong>89%</strong></div><div><small>COBERTURA DE CONTROLES</small><strong>98.4%</strong></div><div><small>ALERTAS ABIERTAS</small><strong>03</strong></div></div><div class="report-note"><b>NOTA DE ALCANCE</b><p>Este informe se genera con datos de demostración del navegador. Para un reporte real, conecta la interfaz con APIs autenticadas de tu plataforma CI/CD, escáneres y herramientas de observabilidad.</p></div></div>
+      </section>
+      <footer class="main-footer"><span>DEV<span>SEC</span>OPS TERMINATOR</span><span>SECURE THE PIPELINE. CONTROL THE FUTURE.</span><span>DEMO MODE <i class="status-led"></i></span></footer>
+    </main>
+  </div>
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
